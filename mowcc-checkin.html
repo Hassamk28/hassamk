@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Case Study: Volunteer Check-In System | Hassam Khan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="How I designed and built a QR-code volunteer check-in and route-assignment system for Meals on Wheels Collin County." />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.phone-shots img { max-width: 260px; margin: 0 auto; border-radius: 14px; box-shadow: 0 6px 22px rgba(0,0,0,0.18); }
+			.phone-shots p { text-align: center; font-size: 0.85rem; margin-top: 0.75rem; }
+			.shot img { border-radius: 8px; box-shadow: 0 6px 22px rgba(0,0,0,0.15); }
+			.caption { text-align: center; font-size: 0.85rem; margin-top: -1rem; }
+			.stack li { display: inline-block; margin: 0 0.4rem 0.6rem 0; padding: 0.2rem 0.8rem; border: solid 2px #212931; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05rem; text-transform: uppercase; }
+			.note { border-left: solid 4px #18bfef; padding: 0.5rem 1rem; background: rgba(24,191,239,0.06); font-size: 0.9rem; }
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Hassam Khan</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Projects</a></li>
+							<li class="active"><a href="mowcc-checkin.html">Case Study</a></li>
+							<li><a href="generic.html">About Me</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/hassam-khan-3975bb146/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/Hassamk28/PortfolioProjects" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<section class="post">
+							<header class="major">
+								<span class="date">Case Study &middot; Meals on Wheels Collin County</span>
+								<h1>Volunteer Check-In<br />System</h1>
+								<p>A QR-code check-in and route-assignment app for meal-delivery volunteers,
+								with a live loading dashboard for staff. It's used on every delivery day.</p>
+							</header>
+
+							<ul class="stack">
+								<li>Node.js</li><li>Express</li><li>SQLite</li><li>JavaScript</li><li>Server-Sent Events</li><li>Excel</li>
+							</ul>
+
+							<p class="note">This is a case study only. The source code and all operational data belong to Meals on Wheels
+							Collin County and are not published. <strong>Every screenshot uses made-up sample data.</strong></p>
+
+							<h2>The problem</h2>
+							<p>Meals on Wheels Collin County delivers meals to older and disabled neighbors across the county. On
+							delivery days, dozens of volunteers pull into the loading area. Each one needs a delivery route, the login for
+							that route in the delivery app, and their meal boxes brought to the right loading lane.</p>
+							<p>Without a system, staff had to track which routes were still open, read logins out loud, and keep track of
+							who was in which lane, all while cars lined up.</p>
+
+							<h2>The solution</h2>
+							<p>Volunteers use a web app on their own phones, with nothing to download. They scan a QR code, type their
+							name, and pick their lane and city. The app gives them a route right away: their regular route if it's open,
+							otherwise the next open route based on rules staff choose.</p>
+
+							<div class="row gtr-uniform phone-shots">
+								<div class="col-4 col-12-small">
+									<span class="image fit"><img src="images/mowcc/checkin-name.png" alt="Check-in screen asking for the volunteer's name" /></span>
+									<p>1. Scan the QR code, enter your name</p>
+								</div>
+								<div class="col-4 col-12-small">
+									<span class="image fit"><img src="images/mowcc/checkin-city.png" alt="Popup asking which city to deliver in, with open routes per city" /></span>
+									<p>2. Choose a city (shows open routes left)</p>
+								</div>
+								<div class="col-4 col-12-small">
+									<span class="image fit"><img src="images/mowcc/checkin-assigned.png" alt="Assigned route screen with stops, lane, and delivery-app login" /></span>
+									<p>3. Route, stops, lane, and login, ready to go</p>
+								</div>
+							</div>
+
+							<p>At that same moment, the <strong>staff dashboard</strong> on the loading-area iPads pops up the volunteer's
+							name, route, box count, and lane, with a chime. Loaders know exactly where to take the boxes. Staff can mark
+							drivers as loaded and out, change a lane, or undo a check-in, which frees that route for the next volunteer.</p>
+
+							<div class="image fit shot"><img src="images/mowcc/dashboard.png" alt="Live staff dashboard listing today's check-ins by lane, route, and box count" /></div>
+							<p class="caption">Live staff dashboard (sample data)</p>
+
+							<h2>Key features</h2>
+							<ul>
+								<li><strong>Three route-assignment modes</strong> staff can switch between: priority order, random, or by city.
+								A volunteer's preferred route always comes first.</li>
+								<li><strong>Extra routes when there's capacity.</strong> A volunteer can take a second route in the same city, but
+								only while enough open routes remain for everyone still expected that day.</li>
+								<li><strong>Admin panel</strong> for managing 90+ routes across about 12 cities, plus volunteers, lanes, and
+								settings.</li>
+								<li><strong>Excel sync.</strong> Staff can bulk-edit routes and volunteers in a spreadsheet they already know, then
+								import them back. Rows missing from the sheet are deactivated, never deleted.</li>
+								<li><strong>History and reporting.</strong> Staff can browse any past day and export all check-in history to
+								Excel.</li>
+								<li><strong>A written SOP and operator guide</strong> so staff can run the system without me.</li>
+							</ul>
+
+							<h2>Design decisions</h2>
+							<div class="table-wrapper">
+								<table>
+									<thead>
+										<tr><th>Decision</th><th>Why</th></tr>
+									</thead>
+									<tbody>
+										<tr><td>Web app, not a native app</td><td>Volunteers, many of them retirees, use their own phones. Nothing to download means no setup barrier.</td></tr>
+										<tr><td>Simple, low-cost stack (Node + SQLite)</td><td>The nonprofit has no IT department. It runs on an office PC and backs up by copying one file.</td></tr>
+										<tr><td>Secure public tunnel instead of paid cloud hosting</td><td>Volunteers load outdoors on cell data, so the app has to be reachable from the internet. This kept the hosting cost at $0.</td></tr>
+										<tr><td>Secret-key QR code, plus a PIN on staff pages</td><td>Only people at the loading area can check in or see route logins.</td></tr>
+										<tr><td>Check-ins are never hard-deleted</td><td>Staff can undo mistakes, and history stays complete for reporting.</td></tr>
+									</tbody>
+								</table>
+							</div>
+
+							<h2>What I learned</h2>
+							<ul>
+								<li>Designing for real users under time pressure, like a volunteer in a car line, means one decision per screen
+								and very large buttons.</li>
+								<li>Adoption matters more than sophistication. The Excel sync and the written SOP did as much for adoption as any
+								technical feature.</li>
+								<li>How to secure an app that has to be public, with protection matched to the real risk.</li>
+							</ul>
+
+							<ul class="actions special">
+								<li><a href="index.html" class="button">Back to Projects</a></li>
+							</ul>
+						</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Location</h3>
+								<p>Collin County, Texas</p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="mailto:hassamk234@gmail.com">hassamk234@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/hassam-khan-3975bb146/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/Hassamk28/PortfolioProjects" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://public.tableau.com/app/profile/hassam.khan1196" class="icon solid alt fa-chart-bar"><span class="label">Tableau Public</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Hassam Khan</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
