@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Case Study: Client Services KPI Model | Hassam Khan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="How I built an auditable, deduplicated KPI model and Power BI report for Meals on Wheels Collin County leadership." />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.shot img { border-radius: 8px; box-shadow: 0 6px 22px rgba(0,0,0,0.15); }
+			.caption { text-align: center; font-size: 0.85rem; margin-top: -1rem; }
+			.stack li { display: inline-block; margin: 0 0.4rem 0.6rem 0; padding: 0.2rem 0.8rem; border: solid 2px #212931; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05rem; text-transform: uppercase; }
+			.note { border-left: solid 4px #18bfef; padding: 0.5rem 1rem; background: rgba(24,191,239,0.06); font-size: 0.9rem; }
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Hassam Khan</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Projects</a></li>
+							<li class="active"><a href="index.html#case-studies">Case Studies</a></li>
+							<li><a href="generic.html">About Me</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/hassam-khan-3975bb146/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/Hassamk28/PortfolioProjects" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<section class="post">
+							<header class="major">
+								<span class="date">Case Study &middot; Meals on Wheels Collin County</span>
+								<h1>Client Services<br />KPI Model</h1>
+								<p>I built an auditable Excel model and a Power BI report that answers leadership's most-asked
+								question: "How many seniors do we actually serve?" It gives one number per question, calculated the same
+								way every time.</p>
+							</header>
+
+							<ul class="stack">
+								<li>Excel</li><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Python</li>
+							</ul>
+
+							<p class="note">This is a case study only. Figures in the text are rounded. <strong>The dashboard image uses
+							made-up sample data</strong>, and no client information is shown.</p>
+
+							<h2>The problem</h2>
+							<p>Leadership needed strategic KPIs for the coming year: seniors served, new enrollments, home visits, and
+							referrals. Later they added a monthly case management report with a city breakdown, time on meals, and the
+							share of clients who are veterans or have pets.</p>
+							<p>The raw data made that harder than it sounds:</p>
+							<ul>
+								<li>The same senior can appear in <strong>both meal programs</strong> (home-delivered and congregate), so simply
+								adding the programs together overcounts. Several hundred seniors are in both.</li>
+								<li>The agency runs on an <strong>October–September fiscal year</strong>, not the calendar year.</li>
+								<li>Some numbers describe a whole year (seniors served) and others are monthly (enrollments). Mix them up and
+								a chart will quietly show the wrong thing.</li>
+							</ul>
+
+							<h2>What I built</h2>
+							<ol>
+								<li><strong>An 11-tab Excel model</strong> built from four cumulative system exports. Every count is
+								<strong>deduplicated on the client ID</strong> and assigned to the correct fiscal year. The model has over
+								77,000 formulas and zero errors, and a method-notes tab defines every metric in plain English.</li>
+								<li><strong>One tidy fact table</strong> that feeds Power BI. It refreshes from OneDrive, so no gateway is needed.</li>
+								<li><strong>DAX measures that make double counting impossible.</strong> Each measure locks to its own metric,
+								so nobody can build a visual that accidentally adds overlapping numbers together.</li>
+								<li><strong>Two Power BI report pages</strong> (monthly activity and client profile) with a synced fiscal-year
+								slicer, plus a one-page PDF summary for the executive director.</li>
+								<li><strong>A written build guide</strong> covering the "looks like a bug but isn't" cases before a board member
+								could ask about them. For example, referrals equal new enrollments by definition.</li>
+								<li><strong>A licensing recommendation</strong> that kept costs low and client data private. It explains why
+								"Publish to web" should not be used for this report.</li>
+							</ol>
+
+							<div class="image fit shot"><img src="images/mowcc/kpi-powerbi.png" alt="Power BI style KPI dashboard with seniors served, enrollments, home visits, and charts (sample data)" /></div>
+							<p class="caption">Client Services KPI dashboard layout (sample data)</p>
+
+							<h2>Results</h2>
+							<ul>
+								<li>Leadership now has <strong>one defensible "seniors served" number</strong>: nearly 3,000 unduplicated seniors a
+								year, with a clear method behind it.</li>
+								<li>The report surfaced long-term reliance on the program. <strong>Nearly two-thirds of active clients</strong> have
+								been receiving meals for more than a year.</li>
+								<li>It tracks how quickly new clients start meals, so leadership can see what share waited longer than a week.</li>
+								<li><strong>Next year needs no rebuild.</strong> Refresh the exports, update a few dates on the reference tab,
+								and the model and report follow.</li>
+							</ul>
+
+							<h2>What I learned</h2>
+							<ul>
+								<li>For board reporting, <strong>consistency and a clear definition</strong> beat a clever metric every time.</li>
+								<li>Design the model so the wrong answer is hard to build, instead of relying on everyone remembering the rules.</li>
+								<li>Write down the surprising-but-correct results in advance. It protects trust in the whole report.</li>
+							</ul>
+
+							<ul class="actions special">
+								<li><a href="index.html#case-studies" class="button">Back to Case Studies</a></li>
+							</ul>
+						</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Location</h3>
+								<p>Collin County, Texas</p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="mailto:hassamk234@gmail.com">hassamk234@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/hassam-khan-3975bb146/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/Hassamk28/PortfolioProjects" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://public.tableau.com/app/profile/hassam.khan1196" class="icon solid alt fa-chart-bar"><span class="label">Tableau Public</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Hassam Khan</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
